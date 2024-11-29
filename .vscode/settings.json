@@ -1,0 +1,9 @@
+{
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "editor.formatOnSave": true,
+    "python.defaultInterpreterPath": "python3",
+    "modulename": "${workspaceFolderBasename}",
+    "distname": "${workspaceFolderBasename}",
+    "moduleversion": "1.0.0"
+}

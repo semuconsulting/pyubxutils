@@ -1,0 +1,107 @@
+[build-system]
+requires = ["setuptools>=66.0.0", "wheel"]
+build-backend = "setuptools.build_meta:__legacy__"
+
+[project]
+name = "pyubxutils"
+authors = [{ name = "semuadmin", email = "semuadmin@semuconsulting.com" }]
+maintainers = [{ name = "semuadmin", email = "semuadmin@semuconsulting.com" }]
+description = "UBX Protocol Command Line Utilities"
+version = "1.0.0"
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: MacOS X",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: X11 Applications",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: BSD License",
+    "Topic :: Utilities",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+
+dependencies = ["pyserial>=3.5", "pyubx2>=1.2.48"]
+
+[project.scripts]
+ubxsetrate = "pyubxutils.ubxsetrate:main"
+ubxsave = "pyubxutils.ubxsave:main"
+ubxload = "pyubxutils.ubxload:main"
+ubxsimulator = "pyubxutils.ubxsimulator_cli:main"
+ubxcompare = "pyubxutils.ubxcompare:main"
+
+[project.urls]
+homepage = "https://github.com/semuconsulting/pyubxutils"
+documentation = "https://www.semuconsulting.com/pyubxutils/"
+repository = "https://github.com/semuconsulting/pyubxutils"
+changelog = "https://github.com/semuconsulting/pyubxutils/blob/master/RELEASE_NOTES.md"
+
+[project.optional-dependencies]
+deploy = ["build", "pip", "setuptools >= 66.0", "wheel"]
+test = [
+    "bandit",
+    "black",
+    "isort",
+    "pylint",
+    "pytest",
+    "pytest-cov",
+    "Sphinx",
+    "sphinx-rtd-theme",
+]
+
+[tool.black]
+target-version = ['py39']
+
+[tool.isort]
+py_version = 39
+profile = "black"
+
+[tool.bandit]
+exclude_dirs = ["docs", "examples", "tests"]
+skips = [
+    "B104", # hardcoded bind
+    "B105", # hardcoded password
+]
+
+[tool.pylint]
+jobs = 0
+reports = "y"
+recursive = "y"
+py-version = "3.9"
+fail-under = "9.8"
+fail-on = "E,F"
+clear-cache-post-run = "y"
+disable = """
+    bad-inline-option,
+    deprecated-pragma,
+    duplicate-code,
+    file-ignored,
+    locally-disabled,
+    logging-fstring-interpolation,
+    raw-checker-failed,
+    suppressed-message,
+    too-few-public-methods,
+    too-many-instance-attributes,
+    use-symbolic-message-instead,
+    useless-suppression
+"""
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "--cov --cov-report html"
+pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["src"]
