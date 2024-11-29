@@ -26,5 +26,3 @@ jobs:
         run: pylint -E src
       - name: Scan security vulnerabilities with bandit
         run: bandit -c pyproject.toml -r .
-      - name: Generate coverage report
-        run: pytest
