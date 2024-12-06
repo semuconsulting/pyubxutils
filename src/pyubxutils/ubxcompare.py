@@ -75,7 +75,7 @@ class UBXCompare:
             fcount += 1
             self.parse_file(cfgdict, file.strip(), fcount, form)
 
-        self.logger.info(
+        print(
             f"{fcount} files processed, list of {'differences in' if diffsonly else 'all'}"
             " config keys and their values follows: ",
         )
@@ -90,7 +90,7 @@ class UBXCompare:
             if (diffsonly and diff) or not diffsonly:
                 print(f"{key} ({'DIFFS!' if diff else None}); {str(vals).strip('{}')}")
 
-        self.logger.info(f"Total config keys: {kcount}. Total differences: {dcount}.")
+        print(f"Total config keys: {kcount}. Total differences: {dcount}.")
 
     def parse_line(self, line: str) -> UBXMessage:
         """
@@ -177,9 +177,9 @@ class UBXCompare:
                             self.get_attrs(cfgdict, str(parsed), fileno)
                             i += 1
         except Exception as err:
-            self.logger.error(f"ERROR parsing {filename}! \n{err}")
+            print(f"ERROR parsing {filename}! \n{err}")
 
-        self.logger.info(f"\n{i} configuration commands processed in {filename}")
+        print(f"\n{i} configuration commands processed in {filename}")
 
 
 def main():

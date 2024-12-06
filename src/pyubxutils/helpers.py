@@ -13,6 +13,7 @@ Created on 26 May 2022
 import logging
 import logging.handlers
 from argparse import ArgumentParser
+from math import trunc
 from os import getenv
 
 from pyubxutils.globals import (
@@ -172,3 +173,35 @@ def progbar(i: int, lim: int, inc: int = 50):
             f"{int(pct*100/inc):02}% " + "\u2593" * pct + "\u2591" * (inc - pct),
             end="\r",
         )
+
+
+def h2sphp(val: float) -> tuple:
+    """
+    Split height in cm into standard (cm) and high (mm * 10)
+    precision components.
+
+    e.g. 123456.78 -> 123456, 78
+
+    :param val: decimal lat/lon value
+    :return: tuple of integers
+    :rtype: tuple
+    """
+
+    sp = trunc(val)
+    hp = int(round((val - sp) * 100, 0))
+    return sp, hp
+
+
+def ll2sphp(val: float) -> tuple:
+    """
+    Split lat/lon into standard (1-7 dp) and high (8-9 dp)
+    precision components.
+
+    e.g. 51.123456789 -> 511234567, 89
+
+    :param val: decimal height value in cm
+    :return: tuple of integers
+    :rtype: tuple
+    """
+
+    return h2sphp(val * 1e7)

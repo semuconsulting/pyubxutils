@@ -169,7 +169,7 @@ class UBXLoader:
         """
 
         rc = 1
-        self.logger.info(
+        print(
             f"Loading configuration from {self._filename} to {self._stream.port}. "
             "Press Ctrl-C to terminate early.",
         )
@@ -182,35 +182,29 @@ class UBXLoader:
             try:
                 sleep(1)
             except KeyboardInterrupt:  # capture Ctrl-C
-                self.logger.warning(
-                    "Terminated by user. Configuration may be incomplete."
-                )
+                print("Terminated by user. Configuration may be incomplete.")
                 self._stop_event.set()
 
         self._read_thread.join()
 
         if self._msg_ack == self._msg_load:
-            self.logger.info(
+            print(
                 "Configuration successfully loaded. "
                 f"{self._msg_load} CFG-VALSET messages sent and acknowledged."
             )
         else:
             null = self._msg_load - self._msg_ack - self._msg_nak
             rc = 0
-            self.logger.warning(
+            print(
                 "Configuration may be incomplete. "
                 f"{self._msg_load} CFG-VALSET messages sent, "
                 f"{self._msg_ack} acknowledged, {self._msg_nak} rejected, "
                 f"{null} null responses."
             )
             if null:
-                self.logger.warning(
-                    f"Consider increasing waittime to >{self._waittime} seconds."
-                )
+                print(f"Consider increasing waittime to >{self._waittime} seconds.")
             if self._msg_nak:
-                self.logger.warning(
-                    "Check device is compatible with this saved configuration."
-                )
+                print("Check device is compatible with this saved configuration.")
 
         return rc
 

@@ -12,6 +12,7 @@ Created on 26 May 2022
 
 from pathlib import Path
 import unittest
+from pyubxutils.helpers import h2sphp, ll2sphp
 
 
 class StaticTest(unittest.TestCase):
@@ -23,6 +24,16 @@ class StaticTest(unittest.TestCase):
     def tearDown(self):
         # self.streamNAV.close()
         pass
+
+    def testll2sphp(self):
+        res = ll2sphp(45.123456789)
+        self.assertEqual(res, (451234567, 89))
+        res = ll2sphp(45.123456789012)
+        self.assertEqual(res, (451234567, 89))
+
+    def testh2sphp(self):
+        res = h2sphp(1234567.89)
+        self.assertEqual(res, (1234567, 89))
 
 
 if __name__ == "__main__":

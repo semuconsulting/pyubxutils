@@ -28,6 +28,14 @@ pyubxutils.helpers module
    :undoc-members:
    :show-inheritance:
 
+pyubxutils.ubxbase module
+-------------------------
+
+.. automodule:: pyubxutils.ubxbase
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 pyubxutils.ubxcompare module
 ----------------------------
 

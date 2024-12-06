@@ -7,7 +7,7 @@ name = "pyubxutils"
 authors = [{ name = "semuadmin", email = "semuadmin@semuconsulting.com" }]
 maintainers = [{ name = "semuadmin", email = "semuadmin@semuconsulting.com" }]
 description = "UBX Protocol Command Line Utilities"
-version = "1.0.0"
+version = "1.0.1"
 license = { file = "LICENSE" }
 readme = "README.md"
 requires-python = ">=3.9"
@@ -41,6 +41,7 @@ ubxsave = "pyubxutils.ubxsave:main"
 ubxload = "pyubxutils.ubxload:main"
 ubxsimulator = "pyubxutils.ubxsimulator_cli:main"
 ubxcompare = "pyubxutils.ubxcompare:main"
+ubxbase = "pyubxutils.ubxbase:main"
 
 [project.urls]
 homepage = "https://github.com/semuconsulting/pyubxutils"
