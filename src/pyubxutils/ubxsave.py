@@ -203,7 +203,7 @@ class UBXSaver:
         """
 
         rc = 1
-        self.logger.info(
+        print(
             f"Saving configuration from {self._stream.port} to {self._file.name}. "
             "Press Ctrl-C to terminate early."
         )
@@ -242,16 +242,16 @@ class UBXSaver:
 
         except KeyboardInterrupt:  # capture Ctrl-C
             self._stop_event.set()
-            self.logger.warning("Terminated by user. Configuration may be incomplete.")
+            print("Terminated by user. Configuration may be incomplete.")
 
         if self._msg_rcvd == self._cfgkeys:
-            self.logger.info(
+            print(
                 "Configuration successfully saved. "
                 f"{self._msg_save} CFG-VALSET messages saved to {self._file.name}"
             )
         else:
             rc = 0
-            self.logger.warning(
+            print(
                 "Configuration may not be successfully saved. "
                 f"{self._msg_sent} CFG-VALGET polls sent to {self._stream.port}, "
                 f"{self._msg_rcvd} CFG-VALGET responses received, "

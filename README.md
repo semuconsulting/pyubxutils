@@ -4,6 +4,9 @@ pyubxutils
 [Current Status](#currentstatus) |
 [Installation](#installation) |
 [ubxsimulator](#ubxsimulator) |
+[ubxsave CLI](#ubxsave) |
+[ubxload CLI](#ubxload) |
+[ubxbase CLI](#ubxbase) |
 [ubxsetrate CLI](#ubxsetrate) |
 [ubxcompare CLI](#ubxcompare) |
 [Graphical Client](#gui) |
@@ -16,6 +19,7 @@ pyubxutils is an original series of Python u-blox ™ UBX © protocol utility cl
 1. [`ubxsimulator`](#ubxsimulator) utility. This provides a basic simulation of a GNSS receiver serial stream by generating synthetic UBX or NMEA messages based on parameters defined in a json configuration file.
 1. [`ubxsave`](#ubxsave) CLI utility. This saves a complete set of configuration data from any Generation 9+ u-blox device (e.g. NEO-M9N or ZED-F9P) to a file. The file can then be reloaded to any compatible device using the `ubxload` utility.
 1. [`ubxload`](#ubxload) CLI utility. This reads a file containing binary configuration data and loads it into any compatible Generation 9+ u-blox device (e.g. NEO-M9N or ZED-F9P).
+1. [`ubxbase`](#ubxbase) CLI utility. A utility which configures compatible u-blox GNSS receivers (e.g. ZED-F9P) as RTK base stations, using either Fixed or Survey-In timing modes.
 1. [`ubxsetrate`](#ubxsetrate) CLI utility. A simple utility which sets NMEA or UBX message rates on u-blox GNSS receivers.
 1. [`ubxcompare`](#ubxcompare) CLI utility. Utility for comparing two or more u-blox config files in either text (\*.txt) or binary (\*.ubx) format. Output files from the `ubxsave` utility can be used as input files.
 
@@ -118,7 +122,7 @@ Command line arguments can be stored in a configuration file and invoked using t
 *GENERATION 9+ DEVICES ONLY (e.g. NEO-M9N or ZED-F9P)*
 
 ```
-class pyubxutils.ubxconfig.UBXSaver(file, stream, **kwargs)
+class pyubxutils.ubxsave.UBXSaver(file, stream, **kwargs)
 ```
 
 CLI utility which saves Generation 9+ UBX device configuration data to a file. `ubxsave` polls configuration data via the device's serial port using a series of CFG-VALGET poll messages. It parses the responses to these polls, converts them to CFG-VALSET command messages and saves these to a binary file. This binary file can then be loaded into any compatible UBX device (e.g. via the `ubxload` utility) to restore the saved configuration.
@@ -145,7 +149,7 @@ ubxsave -h
 *GENERATION 9+ DEVICES ONLY (e.g. NEO-M9N or ZED-F9P)*
 
 ```
-class pyubxutils.ubxconfig.UBXLoader(file, stream, **kwargs)
+class pyubxutils.ubxload.UBXLoader(file, stream, **kwargs)
 ```
 
 CLI utility which loads UBX configuration (CFG-VALSET) data from a binary file (e.g. one created by the `ubxsave` utility) and loads it into the volatile memory (RAM) of a compatible Generation 9+ UBX device via its serial port. It then awaits acknowledgements to this data and reports any errors.
@@ -163,10 +167,33 @@ ubxload -h
 ```
 
 ---
+## <a name="ubxbase">ubxbase CLI</a>
+
+*RTK-COMPATIBLE GENERATION 9+ DEVICES ONLY (e.g. ZED-F9P)*
+
+```
+class pyubxutils.ubxbase.UBXBase(file, stream, **kwargs)
+```
+
+CLI utility which configures a compatible u-blox receiver to RTK base station mode, using either Fixed or Survey-In timing modes.
+
+### CLI Usage:
+
+```shell
+ubxbase -P /dev/ttyACM0 --timemode 2 --fixedpos 37.2334512,-115.8151357,18226.4 --postype 1 --acclimit 10 --waittime 5
+```
+
+For help and full list of optional arguments, type:
+
+```shell
+ubxbase -h
+```
+
+---
 ## <a name="ubxsetrate">ubxsetrate CLI</a>
 
 ```
-class pyubxutils.ubxconfig.UBXSetRate(**kwargs)
+class pyubxutils.ubxsetrate.UBXSetRate(**kwargs)
 ```
 
 A simple CLI utility to set NMEA or UBX message rates on u-blox receivers via a serial port.

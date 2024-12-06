@@ -110,9 +110,7 @@ class UBXSetRate:
         """
 
         try:
-            self.logger.info(
-                f"Opening serial port {self._port} @ {self._baudrate} baud ..."
-            )
+            print(f"Opening serial port {self._port} @ {self._baudrate} baud ...")
             self._serialOut = Serial(self._port, self._baudrate, timeout=self._timeout)
 
             if self._msgClass == ALLNMEA:  # all available NMEA messages
@@ -142,7 +140,7 @@ class UBXSetRate:
             raise err from err
         finally:
             if self._serialOut is not None:
-                self.logger.info("Configuration message(s) sent.")
+                print("Configuration message(s) sent.")
                 self._serialOut.close()
 
     def _sendmsg(self, msgClass: int, msgID: int):
@@ -166,7 +164,7 @@ class UBXSetRate:
             rateSPI=self._rate,
         )
 
-        self.logger.info(f"Sending configuration message {msg}...")
+        print(f"Sending configuration message {msg}...")
         self._serialOut.write(msg.serialize())
 
 
