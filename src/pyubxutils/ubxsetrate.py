@@ -179,7 +179,7 @@ def main():
 
     ap = ArgumentParser(epilog=EPILOG, formatter_class=ArgumentDefaultsHelpFormatter)
     ap.add_argument("-V", "--version", action="version", version="%(prog)s " + VERSION)
-    ap.add_argument("-P", "--port", required=True, help="Serial port")
+    ap.add_argument("-P", "--port", required=False, help="Serial port")
     ap.add_argument(
         "--baudrate",
         required=False,
@@ -215,6 +215,9 @@ def main():
     )
 
     kwargs = set_common_args("ubxsetrate", ap, logdefault=VERBOSITY_HIGH)
+
+    if kwargs.get("port", None) is None:
+        raise ParameterError("Serial port must be specified")
 
     try:
         usr = UBXSetRate(**kwargs)

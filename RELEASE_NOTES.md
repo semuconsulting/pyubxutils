@@ -1,5 +1,11 @@
 # pyubxutils Release Notes
 
+### RELEASE 1.0.2
+
+FIXES:
+
+1. Fix typo in ubxbase config. 
+
 ### RELEASE 1.0.1
 
 ENHANCEMENTS:

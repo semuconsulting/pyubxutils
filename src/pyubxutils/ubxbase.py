@@ -37,6 +37,7 @@ from pyubx2 import (
 from serial import Serial
 
 from pyubxutils._version import __version__ as VERSION
+from pyubxutils.exceptions import ParameterError
 from pyubxutils.globals import EPILOG, VERBOSITY_HIGH
 from pyubxutils.helpers import h2sphp, ll2sphp, progbar, set_common_args
 
@@ -391,7 +392,7 @@ def main():
 
     ap = ArgumentParser(epilog=EPILOG, formatter_class=ArgumentDefaultsHelpFormatter)
     ap.add_argument("-V", "--version", action="version", version="%(prog)s " + VERSION)
-    ap.add_argument("-P", "--port", required=True, help="Serial port")
+    ap.add_argument("-P", "--port", required=False, help="Serial port")
     ap.add_argument(
         "--baudrate",
         required=False,
@@ -464,7 +465,10 @@ def main():
         default=WAITTIME,
     )
 
-    kwargs = set_common_args("ubxload", ap, logdefault=VERBOSITY_HIGH)
+    kwargs = set_common_args("ubxbase", ap, logdefault=VERBOSITY_HIGH)
+
+    if kwargs.get("port", None) is None:
+        raise ParameterError("Serial port must be specified")
 
     with Serial(
         kwargs.get("port"), kwargs.pop("baudrate"), timeout=kwargs.pop("timeout")
