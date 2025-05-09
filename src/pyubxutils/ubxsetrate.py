@@ -7,7 +7,7 @@ to a local serial port via the UBX CFG-MSG command.
 
 Usage:
 
-ubxsetrate --port dev/tty.usbmodem1301 --baudrate 38400 --timeout 5 
+ubxsetrate --port dev/tty.usbmodem1301 --baudrate 38400 --timeout 5
    --msgClass 0xf1 --msgID 0x00 --rate 1 --verbosity 1
 
 or (to turn off all NMEA messages):
