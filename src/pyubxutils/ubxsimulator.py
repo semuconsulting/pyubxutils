@@ -65,7 +65,7 @@ from pyubx2 import (
     utc2itow,
 )
 
-from pyubxutils.globals import EARTH_RADIUS, UBXSIMULATOR, TTY_PROTOCOL
+from pyubxutils.globals import EARTH_RADIUS, TTY_PROTOCOL, UBXSIMULATOR
 
 DEFAULT_INTERVAL = 1000  # milliseconds
 DEFAULT_TIMEOUT = 3  # seconds
