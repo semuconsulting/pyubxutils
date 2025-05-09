@@ -108,7 +108,7 @@ with UBXSimulator(
         print(parsed)
 ```
 
-Generates mock acknowledgements (ACK-ACK) for valid incoming UBX commands and polls.
+Generates mock acknowledgements (ACK-ACK) for valid incoming UBX or TTY (AT+) commands and polls.
 
 See sample [ubxsimulator.json](https://github.com/semuconsulting/pyubxutils/blob/main/examples/ubxsimulator.json) configuration file in the \examples folder, and the [Sphinx API documentation](https://www.semuconsulting.com/pyubxutils/pyubxutils.html#module-pyubxutils.ubxsimulator).
 

@@ -22,10 +22,11 @@ EPILOG = (
 """CLI argument parser epilog"""
 MINNMEA = "minnmea"
 MINUBX = "minubx"
-ALLNMEA_CLS = [b"\xF0", b"\xF1"]
-MINMMEA_ID = [b"\xF0\x00", b"\xF0\x02", b"\xF0\x03", b"\xF0\x04", b"\xF0\x05"]
+ALLNMEA_CLS = [b"\xf0", b"\xf1"]
+MINMMEA_ID = [b"\xf0\x00", b"\xf0\x02", b"\xf0\x03", b"\xf0\x04", b"\xf0\x05"]
 ALLUBX_CLS = [b"\x01"]
 MINUBX_ID = [b"\x01\x04", b"\x01\x07", b"\x01\x35"]
+TTY_PROTOCOL = 32
 
 VERBOSITY_CRITICAL = -1
 """Verbosity critical"""
