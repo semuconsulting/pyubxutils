@@ -1,5 +1,11 @@
 # pyubxutils Release Notes
 
+### RELEASE 1.0.3
+
+ENHANCEMENTS:
+
+1. UBXSimulator now supports limited TTY (AT+) commands. `AT+ECHO=OK` and `AT+ECHO=Error` commands will simulate an `OK` or `Error` TTY response. An `AT+ECHO=xxxxxx` command will echo back the `xxxxxx` string.
+
 ### RELEASE 1.0.2
 
 FIXES:

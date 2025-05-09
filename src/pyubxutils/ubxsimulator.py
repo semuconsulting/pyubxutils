@@ -19,14 +19,14 @@ Example usage:
         for raw, parsed in ubr:
             print(parsed)
 
-Generates mock acknowledgements (ACK-ACK) for valid incoming UBX commands
-and polls.
+Generates mock acknowledgements (ACK-ACK) for valid incoming UBX or TTY (AT+)
+commands and polls.
 
 See sample ubxsimulator.json configuration file in the \\\\examples folder.
 
 NB: Principally intended for testing Python GNSS application functionality.
 There is currently no attempt to simulate real-world satellite geodetics,
-though this could be done using e.g. the Python `skyfield` library and the 
+though this could be done using e.g. the Python `skyfield` library and the
 relevant satellite TLE (orbital elements) files. I may look into adding
 such functionality as and when time permits. Contributions welcome.
 
@@ -65,7 +65,7 @@ from pyubx2 import (
     utc2itow,
 )
 
-from pyubxutils.globals import EARTH_RADIUS, UBXSIMULATOR
+from pyubxutils.globals import EARTH_RADIUS, TTY_PROTOCOL, UBXSIMULATOR
 
 DEFAULT_INTERVAL = 1000  # milliseconds
 DEFAULT_TIMEOUT = 3  # seconds
@@ -303,6 +303,17 @@ class UBXSimulator:
                 self._do_monver(outq)
             if data.identity == "CFG-RATE":
                 self._do_cfgrate(data, outq)
+        else:
+            raw = None
+            if data == b"AT+ECHO=OK\r\n":
+                raw = b"\r\nOK\r\n\r\n"
+            elif data == b"AT+ECHO=ERROR\r\n":
+                raw = b"\r\nError\r\n\r\n"
+            elif data[0:8] == b"AT+ECHO=":
+                raw = data[8:]
+            if raw is not None:
+                outq.put(raw)
+                self.logger.info(f"TTY Response Sent by Simulator: {raw}\n")
 
     def _do_send(self, msg: UBXMessage, outq: Queue):
         """
@@ -434,10 +445,14 @@ class UBXSimulator:
         """
         Simulated write to receiver.
 
-        :param bytes data: UBX data
+        :param bytes data: UBX or TTY data
         """
 
-        prot = protocol(data)
+        if data[0:3] == b"AT+":
+            prot = TTY_PROTOCOL
+        else:
+            prot = protocol(data)
+
         try:
             if prot == RTCM3_PROTOCOL:
                 rtm = RTCMReader.parse(data)
@@ -448,6 +463,9 @@ class UBXSimulator:
                 ubx = UBXReader.parse(data, msgmode=msgmode)
                 self._inqueue.put(ubx)
                 val = ("UBX", ubx)
+            elif prot == TTY_PROTOCOL:
+                self._inqueue.put(data)
+                val = (f"TTY AT+ {prot}", None)
             else:
                 val = (f"Other Protocol {prot}", None)
         except (
