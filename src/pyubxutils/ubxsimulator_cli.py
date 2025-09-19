@@ -5,8 +5,8 @@ CLI wrapper for UBXSimulator class.
 
 Created on 24 Jul 2024
 
-:author: semuadmin
-:copyright: SEMU Consulting © 2024
+:author: semuadmin (Steve Smith)
+:copyright: semuadmin © 2024
 :license: BSD 3-Clause
 """
 

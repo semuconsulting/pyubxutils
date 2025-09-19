@@ -12,8 +12,8 @@ a configuration success criterion.
 
 Created on 06 Jan 2023
 
-:author: semuadmin
-:copyright: SEMU Consulting © 2023
+:author: semuadmin (Steve Smith)
+:copyright: semuadmin © 2023
 :license: BSD 3-Clause
 """
 

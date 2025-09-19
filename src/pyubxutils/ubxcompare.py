@@ -15,8 +15,8 @@ Outputs dictionary of config keys and their values for each file e.g.
 - CFG_RATE_MEAS (DIFFS!): {1: '1000'} signifies the value was missing from the second
   or subsequent file(s)
 
-:author: semuadmin
-:copyright: SEMU Consulting © 2024
+:author: semuadmin (Steve Smith)
+:copyright: semuadmin © 2024
 :license: BSD 3-Clause
 """
 

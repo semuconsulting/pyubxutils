@@ -2,7 +2,7 @@
     "python.testing.pytestEnabled": true,
     "python.testing.unittestEnabled": false,
     "editor.formatOnSave": true,
-    "python.defaultInterpreterPath": "python3",
+    "python.defaultInterpreterPath": "/Users/steve/pygpsclient/bin/python3",
     "modulename": "${workspaceFolderBasename}",
     "distname": "${workspaceFolderBasename}",
 }

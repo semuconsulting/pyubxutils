@@ -1,14 +1,15 @@
 [build-system]
-requires = ["setuptools>=66.0.0", "wheel"]
-build-backend = "setuptools.build_meta:__legacy__"
+requires = ["setuptools>=75.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyubxutils"
 dynamic = ["version"]
-authors = [{ name = "semuadmin", email = "semuadmin@semuconsulting.com" }]
-maintainers = [{ name = "semuadmin", email = "semuadmin@semuconsulting.com" }]
+authors = [{ name = "Steve Smith", email = "semuadmin@semuconsulting.com" }]
+maintainers = [{ name = "Steve Smith", email = "semuadmin@semuconsulting.com" }]
 description = "UBX Protocol Command Line Utilities"
-license = { file = "LICENSE" }
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
@@ -27,29 +28,30 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Utilities",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Scientific/Engineering :: GIS",
 ]
 
-dependencies = ["pyserial>=3.5", "pyubx2>=1.2.48"]
-
-[project.scripts]
-ubxsetrate = "pyubxutils.ubxsetrate:main"
-ubxsave = "pyubxutils.ubxsave:main"
-ubxload = "pyubxutils.ubxload:main"
-ubxsimulator = "pyubxutils.ubxsimulator_cli:main"
-ubxcompare = "pyubxutils.ubxcompare:main"
-ubxbase = "pyubxutils.ubxbase:main"
+dependencies = ["pyserial>=3.5", "pyubx2>=1.2.57"]
 
 [project.urls]
-homepage = "https://github.com/semuconsulting/pyubxutils"
-documentation = "https://www.semuconsulting.com/pyubxutils/"
-repository = "https://github.com/semuconsulting/pyubxutils"
-changelog = "https://github.com/semuconsulting/pyubxutils/blob/master/RELEASE_NOTES.md"
+homepage = "https://github.com/semuconsulting/pyubx2"
+documentation = "https://www.semuconsulting.com/pyubx2/"
+repository = "https://github.com/semuconsulting/pyubx2"
+changelog = "https://github.com/semuconsulting/pyubx2/blob/master/RELEASE_NOTES.md"
 
-[project.optional-dependencies]
-deploy = ["build", "pip", "setuptools >= 66.0", "wheel"]
+[dependency-groups]
+build = [
+    "awscli",
+    "build",
+    "packaging>=24.2",
+    "pip",
+    "setuptools>=75.0.0",
+    "twine>=6.1.0",
+    "wheel",
+]
 test = [
     "bandit",
     "black",
@@ -60,6 +62,7 @@ test = [
     "Sphinx",
     "sphinx-rtd-theme",
 ]
+deploy = [{ include-group = "build" }, { include-group = "test" }]
 
 [tool.setuptools.dynamic]
 version = { attr = "pyubxutils._version.__version__" }
@@ -72,39 +75,44 @@ py_version = 39
 profile = "black"
 
 [tool.bandit]
-exclude_dirs = ["docs", "examples", "tests"]
-skips = [
-    "B104", # hardcoded bind
-    "B105", # hardcoded password
-]
+exclude_dirs = ["docs", "examples", "references", "tests", ".venv"]
+skips = []
 
 [tool.pylint]
 jobs = 0
 reports = "y"
 recursive = "y"
 py-version = "3.9"
-fail-under = "9.8"
+fail-under = "9.7"
 fail-on = "E,F"
 clear-cache-post-run = "y"
+good-names = "i,j,x,y"
 disable = """
-    bad-inline-option,
-    deprecated-pragma,
-    duplicate-code,
-    file-ignored,
-    locally-disabled,
-    logging-fstring-interpolation,
     raw-checker-failed,
+    bad-inline-option,
+    locally-disabled,
+    file-ignored,
     suppressed-message,
-    too-few-public-methods,
-    too-many-instance-attributes,
+    useless-suppression,
+    deprecated-pragma,
     use-symbolic-message-instead,
-    useless-suppression
+    logging-fstring-interpolation,
 """
 
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "--cov --cov-report html"
 pythonpath = ["src"]
+testpaths = ["tests"]
 
 [tool.coverage.run]
 source = ["src"]
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.report]
+
+
+[tool.coverage.html]
+directory = "htmlcov"

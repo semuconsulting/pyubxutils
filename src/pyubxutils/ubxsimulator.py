@@ -32,8 +32,8 @@ such functionality as and when time permits. Contributions welcome.
 
 Created on 3 Feb 2024
 
-:author: semuadmin
-:copyright: SEMU Consulting © 2024
+:author: semuadmin (Steve Smith)
+:copyright: semuadmin © 2024
 :license: BSD 3-Clause
 """
 
@@ -449,6 +449,7 @@ class UBXSimulator:
         """
 
         if data[0:3] == b"AT+":
+            print(f"DEBUG {data} is TTY")
             prot = TTY_PROTOCOL
         else:
             prot = protocol(data)
@@ -465,7 +466,7 @@ class UBXSimulator:
                 val = ("UBX", ubx)
             elif prot == TTY_PROTOCOL:
                 self._inqueue.put(data)
-                val = (f"TTY AT+ {prot}", None)
+                val = (f"TTY AT+ {prot}", data)
             else:
                 val = (f"Other Protocol {prot}", None)
         except (

@@ -16,8 +16,8 @@ ubxsetrate --port /dev/tty.usbmodem1301 --msgClass allnmea --rate 0
 
 Created on 12 Dec 2022
 
-:author: semuadmin
-:copyright: SEMU Consulting © 2022
+:author: semuadmin (Steve Smith)
+:copyright: semuadmin © 2022
 :license: BSD 3-Clause
 """
 
