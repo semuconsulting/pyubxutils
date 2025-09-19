@@ -2,11 +2,11 @@
 ubxcompare.py
 
 Parse and compare contents of two or more u-blox config files. Can accept either
-*.txt (text) or *.ubx (binary) formatted input files - the default is *.txt.
+txt (text) or ubx (binary) formatted input files - the default is txt.
 
 Usage:
 
-   ubxcompare --infiles "config1.txt, config2.txt" --format 0 --diffsonly 1
+ubxcompare --infiles "config1.txt, config2.txt" --format 0 --diffsonly 1
 
 Outputs dictionary of config keys and their values for each file e.g.
 

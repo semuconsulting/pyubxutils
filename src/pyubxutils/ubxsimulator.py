@@ -9,7 +9,7 @@ Simulates a GNSS serial stream by generating synthetic UBX or NMEA messages
 based on parameters defined in a json configuration file. Can simulate a
 motion vector based on a specified course over ground and speed.
 
-Example usage:
+Example usage::
 
     from pyubxutils import UBXSimulator
     from pyubx2 import UBXReader
