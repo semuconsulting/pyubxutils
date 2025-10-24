@@ -48,11 +48,9 @@ Contributions welcome - please refer to [CONTRIBUTING.MD](https://github.com/sem
 
 ![Python version](https://img.shields.io/pypi/pyversions/pyubxutils.svg?style=flat)
 [![PyPI version](https://img.shields.io/pypi/v/pyubxutils.svg?style=flat)](https://pypi.org/project/pyubxutils/)
-![PyPI downloads](https://img.shields.io/pypi/dm/pyubxutils.svg?style=flat)
+[![PyPI downloads](https://github.com/semuconsulting/pygpsclient/blob/master/images/clickpy_icon.svg?raw=true)](https://clickpy.clickhouse.com/dashboard/pyubxutils)
 
-`pyubxutils` is compatible with Python 3.9-3.13.
-
-In the following, `python3` & `pip` refer to the Python 3 executables. You may need to substitute `python` for `python3`, depending on your particular environment (*on Windows it's generally `python`*). **It is strongly recommended that** the Python 3 binaries (\Scripts or /bin) and site_packages directories are included in your PATH (*most standard Python 3 installation packages will do this automatically if you select the 'Add to PATH' option during installation*).
+`pyubxutils` is compatible with Python >= 3.10. In the following, `python3` & `pip` refer to the Python 3 executables. You may need to substitute `python` for `python3`, depending on your particular environment (*on Windows it's generally `python`*). **It is strongly recommended that** the Python 3 binaries (\Scripts or /bin) and site_packages directories are included in your PATH (*most standard Python 3 installation packages will do this automatically if you select the 'Add to PATH' option during installation*).
 
 The recommended way to install the latest version of `pyubxutils` is with [pip](http://pypi.python.org/pypi/pip/):
 
