@@ -1,5 +1,11 @@
 # pyubxutils Release Notes
 
+### RELEASE 1.0.4
+
+ENHANCEMENTS:
+
+1. Drop active support for Python 3.9, add Python 3.14.
+
 ### RELEASE 1.0.3
 
 ENHANCEMENTS:
