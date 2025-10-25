@@ -35,6 +35,14 @@ classifiers = [
 
 dependencies = ["pyserial>=3.5", "pyubx2>=1.2.58"]
 
+[project.scripts]
+ubxsetrate = "pyubxutils.ubxsetrate:main"
+ubxsave = "pyubxutils.ubxsave:main"
+ubxload = "pyubxutils.ubxload:main"
+ubxsimulator = "pyubxutils.ubxsimulator_cli:main"
+ubxcompare = "pyubxutils.ubxcompare:main"
+ubxbase = "pyubxutils.ubxbase:main"
+
 [project.urls]
 homepage = "https://github.com/semuconsulting/pyubx2"
 documentation = "https://www.semuconsulting.com/pyubx2/"

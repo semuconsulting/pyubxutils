@@ -1,5 +1,11 @@
 # pyubxutils Release Notes
 
+### RELEASE 1.0.5
+
+FIXES:
+
+1. Restore command line scripts. Fixes #8.
+
 ### RELEASE 1.0.4
 
 ENHANCEMENTS:
