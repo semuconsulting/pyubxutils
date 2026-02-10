@@ -237,7 +237,7 @@ class UBXBase:
         # or waittime has been exceeded.
         while not stop.is_set():
             try:
-                (_, parsed_data) = ubr.read()
+                _, parsed_data = ubr.read()
                 if parsed_data is not None:
                     if (
                         parsed_data.identity in (ACK, NAK)
