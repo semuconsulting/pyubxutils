@@ -12,7 +12,7 @@
 #
 import os
 import sys
-from pyubxutils import version as VERSION
+
 
 # get path to site-packages (source) folder within venv
 pypath = (
@@ -21,6 +21,8 @@ pypath = (
 )
 print(f"\n\033[1mUsing absolute path:\033[0m \033[95m{pypath}\033[0m\n")
 sys.path.insert(0, os.path.abspath(pypath))
+
+from pyubxutils import version as VERSION
 
 # -- Project information -----------------------------------------------------
 
