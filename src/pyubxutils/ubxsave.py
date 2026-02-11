@@ -145,7 +145,7 @@ class UBXSaver:
             try:
                 if stream.in_waiting:
                     lock.acquire()
-                    (raw_data, parsed_data) = ubr.read()
+                    raw_data, parsed_data = ubr.read()
                     lock.release()
                     if parsed_data is not None:
                         if parsed_data.identity == "CFG-VALGET":
@@ -169,7 +169,7 @@ class UBXSaver:
         while True:
             cfgdata = []
             while queue.qsize() > 0:
-                (_, parsed) = queue.get()
+                _, parsed = queue.get()
                 if parsed.identity == "CFG-VALGET":
                     for keyname in dir(parsed):
                         if keyname[0:3] == "CFG":

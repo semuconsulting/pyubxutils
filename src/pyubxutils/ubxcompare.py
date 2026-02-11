@@ -45,8 +45,9 @@ from pyubxutils.helpers import set_common_args
 CFG = b"\x06"
 VALGET = b"\x8b"
 VALSET = b"\x8a"
-FORMAT_UBX = 1
 FORMAT_TXT = 0
+FORMAT_UBX = 1
+FORMAT_ALL = 2
 
 
 class UBXCompare:
@@ -162,20 +163,23 @@ class UBXCompare:
 
         i = 0
         try:
-            if form == FORMAT_UBX:  # ubx (binary) format
-                with open(filename, "rb") as infile:
-                    ubr = UBXReader(infile, msgmode=SET)
-                    for _, parsed in ubr:
-                        if parsed is not None:
-                            self.get_attrs(cfgdict, str(parsed), fileno)
-                            i += 1
-            else:  # txt (text) format
+            if (
+                filename[-3:].upper() == "TXT" or form == FORMAT_TXT
+            ):  # txt (text) format
                 with open(filename, "r", encoding="utf-8") as infile:
                     for line in infile:
                         parsed = self.parse_line(line)
                         if parsed is not None:
                             self.get_attrs(cfgdict, str(parsed), fileno)
                             i += 1
+            else:  # ubx (binary) format
+                with open(filename, "rb") as infile:
+                    ubr = UBXReader(infile, msgmode=SET)
+                    for _, parsed in ubr:
+                        if parsed is not None:
+                            self.get_attrs(cfgdict, str(parsed), fileno)
+                            i += 1
+
         except Exception as err:
             print(f"ERROR parsing {filename}! \n{err}")
 
@@ -202,10 +206,10 @@ def main():
         "-F",
         "--format",
         required=False,
-        help="Format 0 = txt (text), 1 = ubx (binary)",
+        help="Format 0 = txt (text), 1 = ubx (binary), 2 = derive from file suffix",
         type=int,
-        choices=[0, 1],
-        default=0,
+        choices=[FORMAT_TXT, FORMAT_UBX, FORMAT_ALL],
+        default=FORMAT_ALL,
     )
     ap.add_argument(
         "-D",

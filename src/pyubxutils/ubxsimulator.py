@@ -264,7 +264,7 @@ class UBXSimulator:
                 msgid = msg["msgId"]
                 rate = msg.get("rate", 1)
                 if not loops % rate:
-                    attrs = {**time_attrs, **global_attrs, **msg["attrs"]}
+                    attrs = {**time_attrs, **global_attrs, **msg.get("attrs", {})}
                     ubx = UBXMessage(msgcls, msgid, GET, **attrs)
                     outq.put(ubx.serialize())
 
@@ -275,7 +275,7 @@ class UBXSimulator:
                 rate = msg.get("rate", 1)
                 if not loops % rate:
                     # pynmeagps automatically defaults time to now()
-                    attrs = {**global_attrs, **msg["attrs"]}
+                    attrs = {**global_attrs, **msg.get("attrs", {})}
                     nme = NMEAMessage(talker, msgid, GET, **attrs)
                     outq.put(nme.serialize())
 

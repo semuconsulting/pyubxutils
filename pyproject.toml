@@ -50,6 +50,7 @@ repository = "https://github.com/semuconsulting/pyubx2"
 changelog = "https://github.com/semuconsulting/pyubx2/blob/master/RELEASE_NOTES.md"
 
 [dependency-groups]
+optional = []
 build = [
     "awscli",
     "build",

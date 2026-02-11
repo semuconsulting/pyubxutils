@@ -234,7 +234,7 @@ ubxsetrate -h
 class pyubxutils.ubxcompare.UBXCompare(infiles, form, diffsonly)
 ```
 
-A simple CLI utility for comparing the contents of two or more u-blox configuration files. Files can be in text (\*.txt) format (as used by u-center or ArduSimple) or binary (\*.ubx) format (as used by [PyGPSClient](https://github.com/semuconsulting/PyGPSClient) or [ubxsave](#ubxsave)).
+A simple CLI utility for comparing the contents of two or more u-blox configuration files. Files can be in text (\*.txt) format (as used by u-center or ArduSimple) or binary (\*.ubx) format (as used by [PyGPSClient](https://github.com/semuconsulting/PyGPSClient) or [ubxsave](#ubxsave)). If the format argument `--format` or `-F` is set to 2 (`FORMAT_ALL`), the file format will be derived from the file suffix i.e. `*.txt` for text or `*.ubx` for binary.
 
 e.g. 
 

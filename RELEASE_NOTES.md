@@ -1,5 +1,11 @@
 # pyubxutils Release Notes
 
+### RELEASE 1.0.6
+
+ENHANCMENTS:
+
+1. Allow mixed file formats (ubx & txt) in ubxcompare - addresses feature request https://github.com/semuconsulting/pyubxutils/issues/10
+
 ### RELEASE 1.0.5
 
 FIXES:
