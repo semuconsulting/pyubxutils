@@ -16,7 +16,7 @@ EARTH_RADIUS = 6371  # km
 ALLNMEA = "allnmea"
 ALLUBX = "allubx"
 EPILOG = (
-    "© 2022 SEMU Consulting BSD 3-Clause license"
+    "© 2022 semuadmin (Steve Smith) BSD 3-Clause license"
     " - https://github.com/semuconsulting/pyubxutils/"
 )
 """CLI argument parser epilog"""
