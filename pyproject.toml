@@ -33,7 +33,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: GIS",
 ]
 
-dependencies = ["pyserial>=3.5", "pyubx2>=1.2.58"]
+dependencies = ["pyserial>=3.5", "pyubx2>=1.2.60"]
 
 [project.scripts]
 ubxsetrate = "pyubxutils.ubxsetrate:main"

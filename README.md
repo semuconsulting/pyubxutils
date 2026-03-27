@@ -39,9 +39,9 @@ The pyubxutils homepage is located at [https://github.com/semuconsulting/pyubxut
 
 Sphinx API Documentation in HTML format is available at [https://www.semuconsulting.com/pyubxutils](https://www.semuconsulting.com/pyubxutils).
 
-Contributions welcome - please refer to [CONTRIBUTING.MD](https://github.com/semuconsulting/pyubxutils/blob/master/CONTRIBUTING.md).
+Contributions welcome - please refer to [CONTRIBUTING.MD](https://github.com/semuconsulting/pyubxutils/blob/main/CONTRIBUTING.md).
 
-[Bug reports](https://github.com/semuconsulting/pyubxutils/blob/master/.github/ISSUE_TEMPLATE/bug_report.md) and [Feature requests](https://github.com/semuconsulting/pyubxutils/blob/master/.github/ISSUE_TEMPLATE/feature_request.md) - please use the templates provided. For general queries and advice, post a message to one of the [pyubxutils Discussions](https://github.com/semuconsulting/pyubxutils/discussions) channels.
+[Bug reports](https://github.com/semuconsulting/pyubxutils/blob/main/.github/ISSUE_TEMPLATE/bug_report.md) and [Feature requests](https://github.com/semuconsulting/pyubxutils/blob/main/.github/ISSUE_TEMPLATE/feature_request.md) - please use the templates provided. For general queries and advice, post a message to one of the [pyubxutils Discussions](https://github.com/semuconsulting/pyubxutils/discussions) channels.
 
 ---
 ## <a name="installation">Installation</a>
