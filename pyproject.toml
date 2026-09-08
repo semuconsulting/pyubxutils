@@ -48,10 +48,10 @@ ubxcompare = "pyubxutils.ubxcompare:main"
 ubxbase = "pyubxutils.ubxbase:main"
 
 [project.urls]
-homepage = "https://github.com/semuconsulting/pyubx2"
-documentation = "https://www.semuconsulting.com/pyubx2/"
-repository = "https://github.com/semuconsulting/pyubx2"
-changelog = "https://github.com/semuconsulting/pyubx2/blob/master/RELEASE_NOTES.md"
+homepage = "https://github.com/semuconsulting/pyubxutils"
+documentation = "https://www.semuconsulting.com/pyubxutils/"
+repository = "https://github.com/semuconsulting/pyubxutils"
+changelog = "https://github.com/semuconsulting/pyubxutils/blob/master/RELEASE_NOTES.md"
 
 [dependency-groups]
 optional = []
