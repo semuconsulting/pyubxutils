@@ -5,8 +5,11 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyubxutils"
 dynamic = ["version"]
-authors = [{ name = "Steve Smith", email = "semuadmin@semuconsulting.com" }]
-maintainers = [{ name = "Steve Smith", email = "semuadmin@semuconsulting.com" }]
+authors = [{ name = "Steve Smith" }, { email = "semuadmin@semuconsulting.com" }]
+maintainers = [
+    { name = "Steve Smith" },
+    { email = "semuadmin@semuconsulting.com" },
+]
 description = "UBX Protocol Command Line Utilities"
 license = "BSD-3-Clause"
 license-files = ["LICENSE"]
@@ -28,12 +31,13 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
     "Topic :: Utilities",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Scientific/Engineering :: GIS",
 ]
 
-dependencies = ["pyserial>=3.5", "pyubx2>=1.2.60"]
+dependencies = ["pyserial>=3.5", "pyubx2>=1.3.6"]
 
 [project.scripts]
 ubxsetrate = "pyubxutils.ubxsetrate:main"
