@@ -43,12 +43,14 @@ Contributions welcome - please refer to [CONTRIBUTING.MD](https://github.com/sem
 
 [Bug reports](https://github.com/semuconsulting/pyubxutils/blob/main/.github/ISSUE_TEMPLATE/bug_report.md) and [Feature requests](https://github.com/semuconsulting/pyubxutils/blob/main/.github/ISSUE_TEMPLATE/feature_request.md) - please use the templates provided. For general queries and advice, post a message to one of the [pyubxutils Discussions](https://github.com/semuconsulting/pyubxutils/discussions) channels.
 
+![No Copilot](https://github.com/semuconsulting/PyGPSClient/blob/main/images/nocopilot100.png?raw=true)
+
 ---
 ## <a name="installation">Installation</a>
 
 ![Python version](https://img.shields.io/pypi/pyversions/pyubxutils.svg?style=flat)
 [![PyPI version](https://img.shields.io/pypi/v/pyubxutils.svg?style=flat)](https://pypi.org/project/pyubxutils/)
-[![PyPI downloads](https://github.com/semuconsulting/pygpsclient/blob/master/images/clickpy_top25.svg?raw=true)](https://clickpy.clickhouse.com/dashboard/pyubxutils)
+[![PyPI downloads](https://github.com/semuconsulting/pygpsclient/blob/main/images/clickpy_top25.svg?raw=true)](https://clickpy.clickhouse.com/dashboard/pyubxutils)
 
 `pyubxutils` is compatible with Python >= 3.10. In the following, `python3` & `pip` refer to the Python 3 executables. You may need to substitute `python` for `python3`, depending on your particular environment (*on Windows it's generally `python`*). **It is strongly recommended that** the Python 3 binaries (\Scripts or /bin) and site_packages directories are included in your PATH (*most standard Python 3 installation packages will do this automatically if you select the 'Add to PATH' option during installation*).
 
@@ -269,6 +271,8 @@ ubxcompare -h
 semuadmin@semuconsulting.com
 
 ![License](https://img.shields.io/github/license/semuconsulting/pyubxutils.svg)
+
+[![ORCID iD icon](https://orcid.org/sites/default/files/images/orcid_16x16.png) https://orcid.org/0009-0002-5751-8719](https://orcid.org/0009-0002-5751-8719)
 
 `pyubxutils` is maintained entirely by unpaid volunteers. It receives no funding from advertising or corporate sponsorship. If you find the utility useful, please consider sponsoring the project with the price of a coffee...
 
