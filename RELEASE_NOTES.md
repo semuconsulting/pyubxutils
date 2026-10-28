@@ -1,5 +1,10 @@
 # pyubxutils Release Notes
 
+### RELEASE 1.0.7
+
+1. Update build and test workflows - add Python 3.15.
+1. No functional changes.
+
 ### RELEASE 1.0.6
 
 ENHANCMENTS:

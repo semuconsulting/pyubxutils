@@ -21,13 +21,14 @@ Created on 06 Jan 2023
 
 # pylint: disable=invalid-name
 
-from argparse import ArgumentDefaultsHelpFormatter, ArgumentError, ArgumentParser
+from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 from datetime import datetime, timedelta
 from logging import getLogger
 from math import ceil
 from queue import Queue
 from threading import Event, Lock, Thread
 from time import sleep
+from typing import Any
 
 from pyubx2 import (
     NMEA_PROTOCOL,
@@ -104,7 +105,7 @@ class UBXLoader:
 
     def _read_data(
         self,
-        stream: object,
+        stream: Any,
         ubr: UBXReader,
         queue: Queue,
         stop: Event,

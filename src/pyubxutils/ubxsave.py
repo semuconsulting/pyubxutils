@@ -36,6 +36,7 @@ from math import ceil
 from queue import Queue
 from threading import Event, Lock, Thread
 from time import sleep, strftime
+from typing import Any
 
 from pyubx2 import (
     POLL_LAYER_RAM,
@@ -128,7 +129,7 @@ class UBXSaver:
 
     def _read_data(
         self,
-        stream: object,
+        stream: Any,
         ubr: UBXReader,
         queue: Queue,
         lock: Lock,
